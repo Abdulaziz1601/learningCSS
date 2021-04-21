@@ -1,0 +1,89 @@
+
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2) ; /*: shadow in X direction, shadow in Y direction, color of box-shadow: ;*/
+        
+        &:after {
+            transform: scaleX(1.4) scaleY(1.6); /* Scales an after pseudo element */
+            opacity: 0;
+        }
+    }
+
+    &:active {   
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2) ; /*Decreasing shadow, when user presses a button, making it cooler*/
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    /* Using pseudo elements, allow us to style certain parts of elements, */
+    /*"after" pseudoelement adds virtual element right after selected btn, so we can style this element */
+    &::after {
+        /*Trick here: we add an elem, that looks exactly like button we already have, but we put It behind the button*/
+        content: "";
+        display: inline-block;
+        height: 100%; /*pseude elems are basically treated as child elems, so if we wrote height100% it takes parent as btn and gives 100% of btn*/
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s ;
+    }
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .75; /*: animation-name: ;, animation-duration: ;, animation-timing-function: ;, animation-delay: ;*/
+        animation-fill-mode: backwards; /*Attaches o% animation keyframe to the btn*/
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        font-size: $default-font-size;
+        cursor: pointer;
+        transition: all .2s ease-in; 
+    }
+
+    
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black,.15); // X:0, Y: 10px, BLUR: 20px black-color
+        transform: translateY(-2px);
+
+    }
+    
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black,.15); // X:0, Y: 10px, BLUR: 20px black-color
+        transform: translate (0);
+    }
+}
+

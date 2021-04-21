@@ -1,0 +1,251 @@
+@keyframes moveInLeft {
+  0% {
+    /*Starting Point of animation */
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    /*As it goes right and returns at the middle of animation we have to specify property here*/
+    transform: translateX(1rem); }
+  100% {
+    /*Ending Point of animation */
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    /*Starting Point of animation */
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    /*As it goes right and returns at the middle of animation we have to specify property here*/
+    transform: translateX(-1rem); }
+  100% {
+    /*Ending Point of animation */
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    transform: translateY(3rem);
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  /* Declaring font-size of root, so rem can inherit from root tag  */
+  /* font-size: 10px;SO 1REM is 10px */
+  font-size: 62.5%;
+  /*It is not good pracitce, for ex: if user wanna change 
+    default font-size if it is given in px it CANNOT be CHANGED
+    so here we are giving in % of 62.5% === 10px, so 1rem = 10px, VERY EASY TO USE*/ }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  /*30px*/ }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* Sometimes animation shakes, so this property helps to fix this problem */
+  backface-visibility: hidden;
+  /* On animation this entire "heading-primary" element moves , so it is shaking little bit
+       "backface-visibility" property determines the backpart of element if is visible or hidden,
+       for example if  we transform an element by rotating it to 180 degrees, so we can see back part of this element
+       if we use "backface-visibility: hidden;", backpart of an elem gets hidden, but in this case it helps to delete shaking*/
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    /*Name of the keyframe animation*/
+    animation-duration: 1s;
+    /*Duration Timer animation*/
+    animation-timing-function: ease-out;
+    /*Type of animation, ease-out: starts slow and becomes faster*/
+    /*animation-iteration-count: 3; /*Animation repeats 3 Times*/
+    /* animation-delay: 3s; /*Waits 3 seconds and animates */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+    /*Shorthand for animation property*/ }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-meduim {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.btn {
+  /* Using pseudo elements, allow us to style certain parts of elements, */
+  /*"after" pseudoelement adds virtual element right after selected btn, so we can style this element */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /*: shadow in X direction, shadow in Y direction, color of box-shadow: ;*/ }
+    .btn:hover:after {
+      transform: scaleX(1.4) scaleY(1.6);
+      /* Scales an after pseudo element */
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    /*Decreasing shadow, when user presses a button, making it cooler*/ }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    /*Trick here: we add an elem, that looks exactly like button we already have, but we put It behind the button*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    /*pseude elems are basically treated as child elems, so if we wrote height100% it takes parent as btn and gives 100% of btn*/
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .75;
+    /*: animation-name: ;, animation-duration: ;, animation-timing-function: ;, animation-delay: ;*/
+    animation-fill-mode: backwards;
+    /*Attaches o% animation keyframe to the btn*/ }
+
+.btn-text:link, .btn-text:visited {
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all .2s ease-in; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translate 0; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% -  2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% -  2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% -  3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% -  3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% -  3 * 6rem) / 4) + (2 * 6rem)); }
+
+.header {
+  height: 95vh;
+  /*Shows almost 100 % of content*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%);
+  /*Very Important Property */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem;
+    /* width will be figured out by browser */ }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /*if  50% looks more down so we made it 40%*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*In relation to the element itself*/
+    /*X(-50%):Will be shifted half of width to left*/
+    /*Y(-50%):Will be shifted half of height to top*/
+    text-align: center; }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }

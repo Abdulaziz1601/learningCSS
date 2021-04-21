@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+ html { /* Declaring font-size of root, so rem can inherit from root tag  */
+    /* font-size: 10px;SO 1REM is 10px */
+    font-size: 62.5%;/*It is not good pracitce, for ex: if user wanna change 
+    default font-size if it is given in px it CANNOT be CHANGED
+    so here we are giving in % of 62.5% === 10px, so 1rem = 10px, VERY EASY TO USE*/    
+}
+
+body {
+    box-sizing: border-box;
+}

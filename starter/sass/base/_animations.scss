@@ -1,0 +1,42 @@
+@keyframes moveInLeft {
+    0% { /*Starting Point of animation */
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% { /*As it goes right and returns at the middle of animation we have to specify property here*/
+        transform: translateX(1rem);
+    }
+    100% { /*Ending Point of animation */
+        opacity: 1;
+        transform: translate(0);
+    }
+
+}
+
+@keyframes moveInRight {
+    0% { /*Starting Point of animation */
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% { /*As it goes right and returns at the middle of animation we have to specify property here*/
+        transform: translateX(-1rem);
+    }
+    100% { /*Ending Point of animation */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom  {
+    0% {
+        transform: translateY(3rem);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
