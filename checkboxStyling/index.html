@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        ;
+        padding: 25px;
+        font-family: sans-serif;
+    }
+
+    .option {
+        display: block;
+        margin-bottom: 0.25em;
+    }
+
+    .check {
+        padding-left: 1.2em;
+    }
+
+    /* Hiding checkbox */
+    .check__input {
+        position: absolute;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .check__box {
+        position: absolute;
+        margin-left: -1.2em;
+        width: 1em;
+        height: 1em;
+        background-image: url('https://pepelsbey.github.io/playground/14/images/off.svg');
+    }
+
+    /* Checked */
+
+    .check__input:checked+.check__box {
+        background-image: url('https://pepelsbey.github.io/playground/14/images/on.svg');
+    }
+    /* Focused */
+    .check__input:focus+.check__box {
+        background-image: url('https://pepelsbey.github.io/playground/14/images/off-focused.svg');
+    }
+    .check__input:checked:focus +.check__box {
+        background-image: url('https://pepelsbey.github.io/playground/14/images/on-focused.svg');
+    }
+    
+    /* Disabled */
+    .check__input:disabled+.check__box {
+        background-image: url('https://pepelsbey.github.io/playground/14/images/off-disabled.svg');
+    }
+    .check__input:checked:disabled +.check__box {
+        background-image: url('https://pepelsbey.github.io/playground/14/images/on-disabled.svg');
+    }
+</style>
+
+<body>
+    <!-- if input is inside label we don't have to connect input with label with ID or etc -->
+    <label class="check option">
+        <input class="check__input" type="checkbox">
+        <span class="check__box"></span>
+        First
+    </label>
+    <label class="check option">
+        <input class="check__input" type="checkbox" checked>
+        <span class="check__box"></span>
+        Second
+    </label>
+    <!-- disabled checkboxes can't be accessed via tabs or clicked  -->
+    <label class="check option">
+        <input class="check__input" type="checkbox" disabled>
+        <span class="check__box"></span>
+
+        Third
+    </label>
+    <label class="check option">
+        <input class="check__input" type="checkbox" checked disabled>
+        <span class="check__box"></span>
+
+        Fifth
+    </label>
+</body>
+
+</html>
